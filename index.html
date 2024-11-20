@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Auth Example</title>
-    <style id="dynamic-style"></style>
+    <title>Access Prompt</title>
+    <script>
+        function promptForAccess() {
+            // Prompt for the access code
+            var accessCode = prompt("Please enter the access code to continue:");
+
+            // Check if the entered code matches a pre-defined code
+            var correctCode = "secret123"; // Define the correct access code
+
+            // If the user enters the correct code, allow access
+            if (accessCode === correctCode) {
+                alert("Access granted!");
+                document.getElementById("content").style.display = "block"; // Show the content
+            } else {
+                alert("Access denied! Incorrect code.");
+                // Optionally, you can reload or close the window
+                window.location.href = "about:blank"; // Redirect to a blank page
+            }
+        }
+
+        // Trigger the prompt when the page is loaded
+        window.onload = promptForAccess;
+    </script>
 </head>
 <body>
-    <h1>Welcome to the Protected Page</h1>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const password = prompt("Enter the access password:");
-            if (password === "securepass") {
-                const link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = "https://sisaco.github.io/style.css";
-                document.head.appendChild(link);
-                alert("Access Granted!");
-            } else {
-                alert("Access Denied!");
-            }
-        });
-    </script>
+
+    <h1>Welcome to My Website</h1>
+    
+    <!-- The content that will be shown after access is granted -->
+    <div id="content" style="display:none;">
+        <p>This is the protected content of the website. You have been granted access.</p>
+    </div>
+
 </body>
 </html>
