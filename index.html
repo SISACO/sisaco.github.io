@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restricted Access</title>
+    <script>
+        function checkAccess() {
+            const password = prompt("Enter the access password:");
+            if (password === "secret123") {
+                document.getElementById("protected-content").style.display = "block";
+            } else {
+                alert("Access Denied!");
+            }
+        }
+        window.onload = checkAccess;
+    </script>
+</head>
+<body>
+    <div id="protected-content" style="display: none;">
+        <h1>Welcome to the Protected Page</h1>
+        <p>This content is restricted.</p>
+    </div>
+</body>
+</html>
