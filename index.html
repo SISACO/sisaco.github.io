@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restricted Access</title>
+    <title>CSS Auth Example</title>
+    <style id="dynamic-style"></style>
+</head>
+<body>
+    <h1>Welcome to the Protected Page</h1>
     <script>
-        function checkAccess() {
+        document.addEventListener('DOMContentLoaded', () => {
             const password = prompt("Enter the access password:");
-            if (password === "secret123") {
-                document.getElementById("protected-content").style.display = "block";
+            if (password === "securepass") {
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "https://sisaco.github.io/style.css";
+                document.head.appendChild(link);
+                alert("Access Granted!");
             } else {
                 alert("Access Denied!");
             }
-        }
-        window.onload = checkAccess;
+        });
     </script>
-</head>
-<body>
-    <div id="protected-content" style="display: none;">
-        <h1>Welcome to the Protected Page</h1>
-        <p>This content is restricted.</p>
-    </div>
 </body>
 </html>
